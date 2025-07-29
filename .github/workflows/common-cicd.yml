@@ -62,15 +62,15 @@ env:
     IGNORE_TEST: ${{ fromJson(inputs.additional_args).ignore_test }}
     IGNORE_INTEGRATION_TEST: ${{ fromJson(inputs.additional_args).ignore_integration_test || 'false' }}
 
+    # ==== Repository secrets ====
+    GH_SSH_KEY: ${{secrets.GH_SSH_KEY}} # ssh key text to access GitHub repo
+    GH_CHECK_RUNS_MANAGER_TOKEN: ${{ secrets.GH_CHECK_RUNS_MANAGER_TOKEN }} # token use to create and update check run
+    GH_TOKEN: ${{secrets.GH_TOKEN}} # token use to build and push package to GitHub container registry
+
     # ==== Vault secrets ====
     VAULT_ADDR: ${{ secrets.VAULT_ADDR }} # Vault address
     VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }} # Vault token
     VAULT_SECRET_PATHS: ${{ secrets.VAULT_SECRET_PATHS }} # Comma-separated list of Vault secret paths (KV v2)
-
-    # ==== Repository secrets ====
-#    GH_SSH_KEY: ${{secrets.GH_SSH_KEY}} # ssh key text to access GitHub repo
-#    GH_CHECK_RUNS_MANAGER_TOKEN: ${{ secrets.GH_CHECK_RUNS_MANAGER_TOKEN }} # token use to create and update check run
-#    GH_TOKEN: ${{secrets.GH_TOKEN}} # token use to build and push package to GitHub container registry
 
     # ==== Environment secrets =====
 #    TELEGRAM_CHANNEL_ID: ${{secrets.TELEGRAM_CHANNEL_ID}}
